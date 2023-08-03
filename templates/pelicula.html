@@ -1,0 +1,86 @@
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+<style> .carrusel{
+    display:flex;
+    flex-wrap: nowrap;
+    overflow: scroll;
+}
+
+.elemento{
+    flex: 1 0 auto;
+    margin: 0 50px;
+    
+   
+}
+</style>
+
+<div>
+    <h1> PELICULA </h1>
+    <div class="row">
+        <div class="col-2">
+            <p>Descripción:</p>
+            <p>{{ peli.resumen }}</p>
+        </div>
+        <div class="col-8">
+            <div class="text-center">
+                <img src="{{ peli.foto.url }}" class="card-img-top mx-auto w-50 border shadow px-2" >
+            </div>
+            <p class="text-center">{{ peli.nombre }}</p>
+           
+        </div>
+        <div class="col-2">
+            <p>Géneros:</p>
+            <ul>
+                {% for genero in peli.generos.all %}
+                    <li>{{ genero.nombre }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<h2> Actores: </h2>
+<div class="carrusel">
+    {% for actor in peli.actores.all %}
+        <div class="elemento">
+            <img src="{{ actor.foto.url }}" >
+            <p> {{actor.nombre}} </p>
+        </div>
+    {% endfor %}
+</div>
+
+<h2>Directores:</h2>
+<ul>
+   
+    <li>{{ peli.directores.nombre }}</li>
+</ul>
+
+
+
+<a href="{% url 'critica' peli.id %}" class="btn btn-primary" role="button">Cargar crítica</a>
+
+<div class="col-md-4">
+    <h2>Otras reseñas</h2>
+    
+        {% for comentario in comentarios %}
+        {% if comentario.estado == "aprobado" %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ comentario.nombre }}</h5>
+                    <p class="card-text">{{ comentario.reseña }}</p>
+                    <p class="card-text">{{ comentario.puntaje }}</p>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+</div>
+</div>
+
+
+
+
+
+

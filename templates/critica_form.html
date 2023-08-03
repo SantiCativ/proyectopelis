@@ -1,0 +1,28 @@
+<!-- critica_form.html -->
+
+<form method="post">
+    {% csrf_token %}
+  
+    <div>
+      <label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+      {{ form.nombre }}
+    </div>
+  
+    <div>
+      <label for="{{ form.email.id_for_label }}">Email:</label>
+      {{ form.email }}
+    </div>
+  
+    <div>
+      <label for="{{ form.reseña.id_for_label }}">Reseña:</label>
+      {{ form.reseña }}
+    </div>
+  
+    <div>
+      <label for="{{ form.puntaje.id_for_label }}">Puntaje:</label>
+      {{ form.puntaje }}
+    </div>
+  
+    <button type="submit">Enviar</button>
+  </form>
+  

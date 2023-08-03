@@ -1,0 +1,18 @@
+{% include 'actor.css' %}
+
+
+<div>
+    <h1> ACTOR</h1>
+    <img src="{{ actor.foto.url }}" class="card-img-top" >
+    <p class="card-text">{{ actor.nombre }}</p>
+    <p class="card-text">{{ actor.resumen}}</p>
+
+</div>
+
+
+<h2>PELICULAS QUE PARTICIPO</h2>
+<ul>
+    {% for peliculas in peli %}
+        <li>{{ peliculas.nombre }}</li>
+    {% endfor %}
+</ul>

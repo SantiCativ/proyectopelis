@@ -1,0 +1,15 @@
+<div>
+    <h1> DIRECTORES</h1>
+    <img src="{{ director.foto.url }}" class="card-img-top" >
+    <p class="card-text">{{ director.nombre }}</p>
+    <p class="card-text">{{ director.resumen}}</p>
+
+</div>
+
+
+<h2>PELICULAS QUE PARTICIPO</h2>
+<ul>
+    {% for peliculas in peli %}
+        <li>{{ peliculas.nombre }}</li>
+    {% endfor %}
+</ul>

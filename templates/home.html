@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="grid-container">
+    {% for pelicula in page_obj %}
+    <div class="grid-item">
+      <div class="card" style="width: 18rem;">
+        <a href="{% url 'pelicula' pelicula.id %}">
+          <img src="{{ pelicula.foto.url }}" class="card-img-top" alt="{{ pelicula.ranking }}">
+        </a>
+          <div class="card-body">
+            <b class="card-text">{{ pelicula.nombre }}</b>
+            <br>
+            {%if pelicula.ranking%}
+            <b class="card-text">{{ pelicula.ranking }}</b>
+            {%endif%}
+          </div>
+        </div>
+      </div> 
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}
